@@ -44,4 +44,44 @@ const bookStore = {
 }
 
 // Write your code here!
+// Step 1: Update the header
+const bookStoreTitle = document.getElementById("header");
+bookStoreTitle.textContent = bookStore.name;
+
+// Step 2: Select the book list container
+const bookList = document.getElementById("book-list");
+
+// Step 3: Loop through books and create elements
+bookStore.books.forEach(book => {
+    // Create container
+    const bookContainer = document.createElement("li");
+    bookContainer.classList.add("book-item");
+
+    // Title
+    const bookTitle = document.createElement("h3");
+    bookTitle.textContent = book.title;
+
+    // Author
+    const bookAuthor = document.createElement("p");
+    bookAuthor.textContent = `Author: ${book.author}`;
+
+    // Image
+    const bookImage = document.createElement("img");
+    bookImage.src = book.imageUrl;
+    bookImage.alt = book.title;
+
+    // Append elements to container
+    bookContainer.appendChild(bookTitle);
+    bookContainer.appendChild(bookAuthor);
+    bookContainer.appendChild(bookImage);
+
+    // Append container to book list
+    bookList.appendChild(bookContainer);
+});
+
+// Step 4: Bonus — Delete element if exists
+const deleteElement = document.getElementById("delete-this");
+if (deleteElement) {
+    deleteElement.remove();
+}
 
